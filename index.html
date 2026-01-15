@@ -9,103 +9,123 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        /* ===== СБРОС СТИЛЕЙ ===== */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+            font-size: 16px;
+        }
 
+        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
         body {
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
             line-height: 1.7;
             color: #5a5a5a;
-            background-color: #fefefe;
-            background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-color: #f9f7f2;
+            background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
-        }
-
-        .overlay {
-            background-color: rgba(255, 255, 255, 0.92);
             min-height: 100vh;
-            padding: 20px;
+            position: relative;
         }
 
+        /* Затемнение фона для лучшей читаемости */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+        }
+
+        /* ===== КОНТЕЙНЕР ===== */
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 40px;
-            background-color: rgba(255, 253, 250, 0.98);
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            padding: 30px 20px;
         }
 
         /* ===== ТИПОГРАФИЯ ===== */
         h1, h2, h3, h4 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
-            color: #7a9a7c; /* Приглушенный зеленый */
             text-align: center;
             margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 3.5em;
-            letter-spacing: 2px;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            font-size: 3.2em;
+            letter-spacing: 1.5px;
+            margin-top: 20px;
+            margin-bottom: 15px;
             color: #333;
+            position: relative;
+        }
+
+        h1:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background-color: #7a9a7c;
+            margin: 15px auto 0;
         }
 
         h2 {
-            font-size: 2.5em;
-            border-bottom: 1px solid #e8e4dc; /* Светлый бежевый */
-            padding-bottom: 15px;
+            font-size: 2.4em;
+            color: #7a9a7c; /* Зеленый цвет */
             margin-top: 60px;
+            padding-bottom: 15px;
             position: relative;
         }
 
         h2:after {
-            content: '✦';
+            content: '';
             position: absolute;
-            bottom: -20px; /* Исправлен наезд на заголовок */
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            background: #fffdfa;
-            padding: 0 15px;
-            color: #c4b8a5; /* Теплый бежевый */
-            font-size: 1.2em;
+            width: 100px;
+            height: 1px;
+            background-color: #c4b8a5; /* Бежевый цвет */
         }
 
         .tagline {
             text-align: center;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6em;
+            font-size: 1.5em;
             color: #888;
             font-style: italic;
             margin-bottom: 40px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        /* ===== ГЕРОЙ-СЕКЦИЯ С ФОТОГРАФИЕЙ ===== */
+        /* ===== ГЕРОЙ-СЕКЦИЯ ===== */
         .hero {
             text-align: center;
-            padding: 50px 20px 40px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 246, 240, 0.95) 100%);
-            border-radius: 8px;
+            padding: 40px 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
             margin-bottom: 40px;
-            border: 1px solid #e8e4dc;
-        }
-
-        .hero h1 {
-            font-size: 4em;
-            margin-bottom: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(232, 228, 220, 0.5);
         }
 
         .profile-photo {
             margin: 25px auto;
             width: 220px;
             height: 220px;
+            position: relative;
         }
 
         .profile-photo img {
@@ -115,9 +135,22 @@
             object-fit: cover;
             border: 5px solid #7a9a7c;
             box-shadow: 0 8px 20px rgba(122, 154, 124, 0.3);
+            transition: transform 0.3s ease;
         }
 
-        /* ===== СЕКЦИИ ===== */
+        .profile-photo img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+        .content-wrapper {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(232, 228, 220, 0.5);
+        }
+
         section {
             margin-bottom: 50px;
         }
@@ -136,6 +169,7 @@
         li {
             margin-bottom: 10px;
             font-size: 1.05em;
+            line-height: 1.6;
         }
 
         strong {
@@ -152,16 +186,19 @@
         }
 
         .service-card {
-            background: #fcfcf9;
+            background: linear-gradient(135deg, #fcfcf9 0%, #f9f7f2 100%);
             padding: 30px;
-            border-radius: 6px;
-            border-top: 4px solid #c4b8a5; /* Бежевый акцент */
+            border-radius: 10px;
+            border-left: 4px solid #c4b8a5; /* Бежевый акцент */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border-top: 1px solid rgba(232, 228, 220, 0.5);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-left-color: #7a9a7c;
         }
 
         .service-card h4 {
@@ -169,48 +206,33 @@
             color: #333;
             font-size: 1.5em;
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* ===== КОНТАКТЫ И КНОПКИ ===== */
-        .contact-info {
-            text-align: center;
-            background: #f9f7f2;
-            padding: 30px;
-            border-radius: 8px;
-            margin-top: 30px;
-        }
-
-        .contact-info a {
-            color: #7a9a7c;
-            text-decoration: none;
-            font-weight: 400;
-            transition: color 0.3s;
-        }
-
-        .contact-info a:hover {
-            color: #5a7a5c;
-            text-decoration: underline;
-        }
-
+        /* ===== КНОПКИ ===== */
         .cta-button {
             display: inline-block;
             background-color: #7a9a7c;
             color: white;
-            padding: 15px 35px;
-            margin: 20px 10px;
+            padding: 16px 38px;
+            margin: 15px 10px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 400;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             border: 2px solid #7a9a7c;
-            box-shadow: 0 4px 10px rgba(122, 154, 124, 0.2);
+            box-shadow: 0 4px 12px rgba(122, 154, 124, 0.25);
+            font-size: 1.05em;
         }
 
         .cta-button:hover {
             background-color: transparent;
             color: #7a9a7c;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(122, 154, 124, 0.3);
         }
 
         .cta-button.secondary {
@@ -223,6 +245,66 @@
             color: white;
         }
 
+        /* ===== КОНТАКТЫ ===== */
+        .contact-info {
+            text-align: center;
+            background: linear-gradient(135deg, #f9f7f2 0%, #f5f2ec 100%);
+            padding: 35px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 1px solid rgba(232, 228, 220, 0.5);
+        }
+
+        .contact-info p {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .contact-info a {
+            color: #7a9a7c;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+            border-bottom: 1px dotted #7a9a7c;
+            padding-bottom: 2px;
+        }
+
+        .contact-info a:hover {
+            color: #5a7a5c;
+            text-decoration: none;
+            border-bottom-style: solid;
+        }
+
+        /* ===== СОЦИАЛЬНЫЕ СЕТИ ===== */
+        .social-links {
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #7a9a7c;
+            font-size: 1.5em;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(122, 154, 124, 0.2);
+        }
+
+        .social-links a:hover {
+            color: white;
+            background-color: #7a9a7c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(122, 154, 124, 0.3);
+        }
+
         /* ===== ФУТЕР ===== */
         footer {
             text-align: center;
@@ -230,22 +312,15 @@
             padding: 30px;
             color: #999;
             font-size: 0.9em;
-            border-top: 1px solid #e8e4dc;
+            border-top: 1px solid rgba(232, 228, 220, 0.8);
         }
 
-        .social-links {
-            margin: 20px 0;
-        }
-
-        .social-links a {
+        .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4em;
             color: #7a9a7c;
-            font-size: 1.5em;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #c4b8a5;
+            margin-top: 10px;
+            font-weight: 500;
         }
 
         /* ===== КНОПКА "НАВЕРХ" ===== */
@@ -263,45 +338,69 @@
             height: 50px;
             font-size: 1.2em;
             cursor: pointer;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             transition: all 0.3s;
         }
 
         #backToTopBtn:hover {
             background-color: #687f6a;
             transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
 
         /* ===== АДАПТИВНОСТЬ ===== */
         @media (max-width: 768px) {
-            .container { padding: 20px; }
-            h1 { font-size: 2.8em; }
-            h2 { font-size: 2em; }
-            .hero { padding: 40px 15px; }
+            .container { padding: 20px 15px; }
+            .content-wrapper { padding: 25px 20px; }
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 2em; margin-top: 40px; }
+            .hero { padding: 30px 15px; }
             .profile-photo { width: 180px; height: 180px; }
-            .cta-button { display: block; margin: 15px auto; width: 90%; text-align: center; }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            .cta-button { 
+                display: block; 
+                margin: 15px auto; 
+                width: 90%; 
+                text-align: center; 
+                padding: 14px 20px;
+            }
+            .social-links { gap: 15px; }
+            .social-links a { width: 45px; height: 45px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.7em; }
+            .tagline { font-size: 1.2em; }
+            .contact-info { padding: 25px 15px; }
         }
     </style>
 </head>
 <body>
-    <div class="overlay">
-        <div class="container">
+    <div class="container">
+        <!-- ГЕРОЙ-СЕКЦИЯ -->
+        <header class="hero">
+            <h1>Karina Aleshina</h1>
+            
+            <!-- ФОТОГРАФИЯ - ЗАМЕНИТЕ НА СВОЮ -->
+            <div class="profile-photo">
+                <img src="IMG_6908.jpeg" alt="Фотография Карины Алешиной">
+            </div>
+            
+            <div class="tagline">Создаю свадьбы, которые отражают вашу историю любви</div>
+            
+            <div class="button-group">
+                <a href="#contact" class="cta-button">
+                    <i class="fas fa-heart"></i> Обсудить ваш праздник
+                </a>
+                <a href="#services" class="cta-button secondary">
+                    <i class="fas fa-list-alt"></i> Мои услуги
+                </a>
+            </div>
+        </header>
 
-            <!-- ГЕРОЙ-СЕКЦИЯ С ФОТОГРАФИЕЙ -->
-            <header class="hero">
-                <h1>Karina Aleshina</h1>
-                
-                <!-- БЛОК С ФОТОГРАФИЕЙ -->
-                <div class="profile-photo">
-                    <img src="https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                         alt="Фотография Карины Алешиной">
-                </div>
-                
-                <div class="tagline">Создаю свадьбы, которые отражают вашу историю любви</div>
-                <a href="#contact" class="cta-button"><i class="fas fa-heart"></i> Обсудить ваш праздник</a>
-                <a href="#services" class="cta-button secondary"><i class="fas fa-list-alt"></i> Мои услуги</a>
-            </header>
-
+        <!-- ОСНОВНОЙ КОНТЕНТ -->
+        <div class="content-wrapper">
             <!-- ОБО МНЕ -->
             <section id="about">
                 <h2>Обо мне</h2>
@@ -310,7 +409,7 @@
                 <p>Моя философия: <strong>ваша свадьба должна быть уникальной, как отпечаток пальца</strong>. Я не работаю по шаблону. Вместе мы создадим праздник, который будет на 100% вашим — от концепции и музыки до меню и цветочных композиций.</p>
             </section>
 
-            <!-- УСЛУГИ (в карточках) -->
+            <!-- УСЛУГИ -->
             <section id="services">
                 <h2>Мои Услуги</h2>
                 <p>Я предлагаю гибкие пакеты услуг, которые можно адаптировать под ваши мечты и бюджет. Вот что входит в мою работу:</p>
@@ -354,55 +453,85 @@
                     <p><i class="fas fa-map-marker-alt"></i> Базируюсь в Москве, работаю по всей России и за рубежом.</p>
 
                     <div class="social-links">
-                        <a href="https://instagram.com/your_profile" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://t.me/your_profile" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
-                        <a href="https://pinterest.com" target="_blank" title="Pinterest (портфолио)"><i class="fab fa-pinterest"></i></a>
+                        <a href="https://instagram.com/your_profile" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://t.me/your_profile" target="_blank" title="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://pinterest.com" target="_blank" title="Pinterest (портфолио)">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
                     </div>
 
                     <p><small>Обычно я отвечаю в течение 24 часов в рабочие дни.</small></p>
-                    <a href="mailto:hello@karina-wedding.com?subject=Запрос на организацию свадьбы" class="cta-button"><i class="fas fa-paper-plane"></i> Написать письмо</a>
+                    <a href="mailto:hello@karina-wedding.com?subject=Запрос на организацию свадьбы" class="cta-button">
+                        <i class="fas fa-paper-plane"></i> Написать письмо
+                    </a>
                 </div>
             </section>
-
-            <!-- ФУТЕР -->
-            <footer>
-                <p>С любовью к деталям и вашим историям,</p>
-                <p style="font-family: 'Cormorant Garamond'; font-size: 1.3em; color: #7a9a7c; margin-top: 10px;">Karina Aleshina</p>
-                <p>© <span id="currentYear"></span> Все права защищены.</p>
-            </footer>
-
-            <!-- КНОПКА НАВЕРХ -->
-            <button id="backToTopBtn" title="Наверх"><i class="fas fa-chevron-up"></i></button>
         </div>
+
+        <!-- ФУТЕР -->
+        <footer>
+            <p>С любовью к деталям и вашим историям,</p>
+            <div class="signature">Karina Aleshina</div>
+            <p>© <span id="currentYear"></span> Все права защищены.</p>
+        </footer>
+
+        <!-- КНОПКА НАВЕРХ -->
+        <button id="backToTopBtn" title="Наверх">
+            <i class="fas fa-chevron-up"></i>
+        </button>
     </div>
 
     <script>
-        // Показ/скрытие кнопки "Наверх"
+        // Кнопка "Наверх"
         const backToTopBtn = document.getElementById("backToTopBtn");
+        
         window.onscroll = function() {
-            backToTopBtn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
         };
+        
         backToTopBtn.onclick = function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         };
 
         // Текущий год в футере
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        // Плавный скролл для всех якорных ссылок
+        // Плавный скролл для ссылок внутри страницы
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                
+                if (targetId === '#') return;
+                
                 const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 20,
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
+        });
+
+        // Простая анимация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Добавляем небольшую задержку для анимации
+            setTimeout(() => {
+                document.querySelector('.hero').style.opacity = '1';
+                document.querySelector('.hero').style.transform = 'translateY(0)';
+            }, 100);
         });
     </script>
 </body>
