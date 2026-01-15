@@ -1,148 +1,376 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Karina Aleshina — свадебный организатор</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karina Aleshina | Свадебный Организатор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background-color: #f6f1ea;
-      color: #1f1f1f;
-      line-height: 1.6;
-    }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            color: #5a5a5a;
+            background-color: #fefefe;
+            background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
 
-    header {
-      background-color: #000;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-    }
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.88);
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-    .hero {
-      max-width: 900px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      align-items: center;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
 
-    .hero img {
-      max-width: 320px;
-      width: 100%;
-      border-radius: 6px;
-    }
+        /* ===== ТИПОГРАФИЯ ===== */
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: #b76e79; /* Цвет пыльной розы */
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    .hero-text {
-      color: #f5f5f5;
-      max-width: 400px;
-    }
+        h1 {
+            font-size: 3.5em;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #333;
+        }
 
-    .hero-text h1 {
-      margin: 0 0 10px;
-      font-size: 32px;
-      letter-spacing: 0.04em;
-    }
+        h2 {
+            font-size: 2.5em;
+            border-bottom: 1px solid #f0e6e6;
+            padding-bottom: 15px;
+            margin-top: 60px;
+            position: relative;
+        }
 
-    .hero-text p {
-      margin: 0;
-      opacity: 0.85;
-    }
+        h2:after {
+            content: '✦';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 10px;
+            color: #d4a798;
+            font-size: 1.2em;
+        }
 
-    section {
-      max-width: 900px;
-      margin: 80px auto;
-      padding: 0 20px;
-    }
+        .tagline {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6em;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
 
-    h2 {
-      font-size: 22px;
-      margin-bottom: 20px;
-    }
+        /* ===== ГЕРОЙ-СЕКЦИЯ (ШАПКА) ===== */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 248, 245, 0.9) 100%);
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border: 1px solid #f5eaea;
+        }
 
-    .info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 5px;
+        }
 
-    .info p {
-      margin: 0 0 12px;
-    }
+        /* ===== СЕКЦИИ ===== */
+        section {
+            margin-bottom: 50px;
+        }
 
-    .contacts a {
-      display: inline-block;
-      margin-right: 20px;
-      text-decoration: none;
-      color: #1f1f1f;
-      border-bottom: 1px solid transparent;
-    }
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
 
-    .contacts a:hover {
-      border-color: #1f1f1f;
-    }
+        ul, ol {
+            padding-left: 25px;
+            margin-bottom: 25px;
+        }
 
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 14px;
-      opacity: 0.6;
-    }
+        li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
 
-    @media (max-width: 700px) {
-      .info {
-        grid-template-columns: 1fr;
-      }
+        strong {
+            color: #a35a65;
+            font-weight: 600;
+        }
 
-      .hero {
-        justify-content: center;
-        text-align: center;
-      }
-    }
-  </style>
+        /* ===== КАРТОЧКИ УСЛУГ ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 6px;
+            border-top: 4px solid #d4a798;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h4 {
+            text-align: left;
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        /* ===== КОНТАКТЫ И КНОПКИ ===== */
+        .contact-info {
+            text-align: center;
+            background: #fcf9f7;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .contact-info a {
+            color: #b76e79;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #8a4a52;
+            text-decoration: underline;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #b76e79;
+            color: white;
+            padding: 15px 35px;
+            margin: 20px 10px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid #b76e79;
+            box-shadow: 0 4px 10px rgba(183, 110, 121, 0.2);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: #b76e79;
+            transform: scale(1.05);
+        }
+
+        /* ===== ФУТЕР ===== */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #999;
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: #b76e79;
+            font-size: 1.5em;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #d4a798;
+        }
+
+        /* ===== КНОПКА "НАВЕРХ" ===== */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            background-color: #b76e79;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        #backToTopBtn:hover {
+            background-color: #a35a65;
+            transform: scale(1.1);
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            h1 { font-size: 2.8em; }
+            h2 { font-size: 2em; }
+            .hero { padding: 40px 15px; }
+            .cta-button { display: block; margin: 15px auto; width: 80%; text-align: center; }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="overlay">
+        <div class="container">
 
-<header>
-  <div class="hero">
-    <img src="hero.jpg" alt="Карина Алёшина">
-    <div class="hero-text">
-      <h1>Karina Aleshina</h1>
-      <p>Свадебный организатор</p>
+            <!-- ГЕРОЙ-СЕКЦИЯ -->
+            <header class="hero">
+                <h1>Karina Aleshina</h1>
+                <div class="tagline">Создаю свадьбы, которые отражают вашу историю любви</div>
+                <a href="#contact" class="cta-button"><i class="fas fa-heart"></i> Обсудить ваш праздник</a>
+                <a href="#services" class="cta-button" style="background-color: transparent; color: #b76e79;"><i class="fas fa-list-alt"></i> Мои услуги</a>
+            </header>
+
+            <!-- ОБО МНЕ -->
+            <section id="about">
+                <h2>Обо мне</h2>
+                <p>Меня зовут <strong>Карина Алешина</strong>. Я не просто организатор свадеб — я ваш персональный <strong>создатель воспоминаний</strong> и <strong>хранитель спокойствия</strong> в самый важный день жизни.</p>
+                <p>Мой путь начался 8 лет назад в сфере <strong>премиального гостеприимства и банкетного менеджмента</strong>. Я научилась чувствовать гостя, предугадывать желания и безупречно управлять процессами. Теперь я вкладываю этот опыт в создание свадеб, где каждая деталь — от первого звонка до финального танца — продумана, гармонична и исполнена с любовью.</p>
+                <p>Моя философия: <strong>ваша свадьба должна быть уникальной, как отпечаток пальца</strong>. Я не работаю по шаблону. Вместе мы создадим праздник, который будет на 100% вашим — от концепции и музыки до меню и цветочных композиций.</p>
+            </section>
+
+            <!-- УСЛУГИ (в карточках) -->
+            <section id="services">
+                <h2>Мои Услуги</h2>
+                <p>Я предлагаю гибкие пакеты услуг, которые можно адаптировать под ваши мечты и бюджет. Вот что входит в мою работу:</p>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h4><i class="fas fa-crown"></i> Полное Сопровождение</h4>
+                        <p>От идеи до финального "спасибо". Я возьму на себя все переговоры с площадкой, подрядчиками (флористы, фотографы, декораторы), составлю детальный тайминг и буду лично координировать каждый момент в день свадьбы, чтобы вы могли просто наслаждаться.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4><i class="fas fa-lightbulb"></i> Концепция и Декор</h4>
+                        <p>Помощь в выборе и детальной проработке стиля свадьбы. Подбор цветовой палитры, создание moodboard, поиск уникального декора, который расскажет вашу историю. Работа с лучшими флористами и декораторами города.</p>
+                    </div>
+                    <div class="service-card">
+                        <h4><i class="fas fa-calendar-check"></i> Координация в День Свадьбы</h4>
+                        <p>Идеальное решение, если вы спланировали свадьбу сами, но хотите, чтобы в самый день всё прошло гладко. Я возьму на себя контроль за всеми процессами, работой подрядчиков и решением нештатных ситуаций, чтобы для вас этот день был абсолютно беззаботным.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ПРОЦЕСС РАБОТЫ -->
+            <section id="process">
+                <h2>Как мы будем работать</h2>
+                <ol>
+                    <li><strong>Знакомство за кофе (или Zoom)</strong>: Обсудим ваши мечты, видение, бюджет и дату. Поймем, подходим ли мы друг другу.</li>
+                    <li><strong>Разработка концепции и плана</strong>: Я подготовлю для вас персональное предложение с концепцией, примерным планом и бюджетом.</li>
+                    <li><strong>Погружение в детали</strong>: Вместе выберем площадку, подрядчиков, продумаем меню, декор и развлечения. Я веду всю организационную переписку.</li>
+                    <li><strong>Финальная подготовка</strong>: Составляем детальный тайминг дня, план рассадки гостей и список задач для всех участников. Проводим финальную встречу со всеми подрядчиками.</li>
+                    <li><strong>Ваш идеальный день</strong>: Я присутствую на всей свадьбе, координирую процесс, решаю вопросы, чтобы вы и ваши родители были спокойны и счастливы.</li>
+                </ol>
+            </section>
+
+            <!-- КОНТАКТЫ -->
+            <section id="contact">
+                <h2>Давайте создавать вашу сказку</h2>
+                <p>Готовы начать планировать свадьбу вашей мечты? Свяжитесь со мной любым удобным способом, и мы назначим первую встречу.</p>
+
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:hello@karina-wedding.com">hello@karina-wedding.com</a></p>
+                    <p><i class="fas fa-phone"></i> Телефон / WhatsApp: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Базируюсь в Москве, работаю по всей России и за рубежом.</p>
+
+                    <div class="social-links">
+                        <a href="https://instagram.com/your_profile" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://t.me/your_profile" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://pinterest.com" target="_blank" title="Pinterest (портфолио)"><i class="fab fa-pinterest"></i></a>
+                    </div>
+
+                    <p><small>Обычно я отвечаю в течение 24 часов в рабочие дни.</small></p>
+                    <a href="mailto:hello@karina-wedding.com?subject=Запрос на организацию свадьбы" class="cta-button"><i class="fas fa-paper-plane"></i> Написать письмо</a>
+                </div>
+            </section>
+
+            <!-- ФУТЕР -->
+            <footer>
+                <p>С любовью к деталям и вашим историям,</p>
+                <p style="font-family: 'Cormorant Garamond'; font-size: 1.3em; color: #b76e79; margin-top: 10px;">Karina Aleshina</p>
+                <p>© <span id="currentYear"></span> Все права защищены.</p>
+            </footer>
+
+            <!-- КНОПКА НАВЕРХ -->
+            <button id="backToTopBtn" title="Наверх"><i class="fas fa-chevron-up"></i></button>
+        </div>
     </div>
-  </div>
-</header>
 
-<section>
-  <h2>Обо мне</h2>
-  <p>
-    Я начинающий свадебный организатор с опытом в сфере гостеприимства и сервиса.
-    Карьеру начала в 18 лет в розничной торговле, затем работала в ресторане,
-    где освоила высокие стандарты обслуживания и взаимодействия с гостями.
-  </p>
-  <p>
-    Опыт банкетного менеджмента помог развить навыки организации мероприятий,
-    координации процессов и создания комфортной атмосферы для клиентов.
-    Сейчас я выхожу в ивент-сферу, чтобы создавать тёплые и продуманные свадьбы.
-  </p>
-</section>
+    <script>
+        // Показ/скрытие кнопки "Наверх"
+        const backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = function() {
+            backToTopBtn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
+        };
+        backToTopBtn.onclick = function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
 
-<section>
-  <h2>Контакты</h2>
-  <div class="contacts">
-    <a href="https://www.instagram.com/vesnushataya" target="_blank">Instagram</a>
-    <a href="https://t.me/vesnuschataya" target="_blank">Telegram</a>
-  </div>
-</section>
+        // Текущий год в футере
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-<footer>
-  © Karina Aleshina
-</footer>
-
+        // Плавный скролл для всех якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
